@@ -5,14 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayCompanionsList">
+    tools:context=".DisplayPeopleList">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/companions_recycler_view"
+        android:id="@+id/recycler1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:scrollbars="vertical"/>
-
+        android:background="#65E4A6"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

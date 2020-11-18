@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WordMinisteringChart">
-        <activity android:name=".DisplayCompanionsList"></activity>
+        <activity android:name=".person"></activity>
+        <activity android:name=".DisplayPeopleList" />
+        <activity android:name=".DisplayCompanionsList" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
