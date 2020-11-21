@@ -1,64 +1,79 @@
 package com.example.wordministeringchart;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
-import android.os.Bundle;
+import java.util.ArrayList;
 
 public class DisplayPeopleList extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
-    personAdapter adapter; // Create Object of the Adapter class
-    DatabaseReference mbase; // Create object of the
-    // Firebase Realtime Database
-
+    private static String TAG = "DisplayPeopleList";
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "Start Activity");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_display_people_list);
+        RecyclerView recyclerView = findViewById(R.id.recycler1);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager rLayoutManager= new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(rLayoutManager);
 
-        // Create a instance of the database and get
-        // its reference
-        mbase = FirebaseDatabase.getInstance().getReference();
+        Log.d(TAG, "create RecyclerView");
 
-        recyclerView = findViewById(R.id.recycler1);
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        Log.d(TAG, "Create DatabaseReference");
 
-        // To display the Recycler view linearly
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // It is a class provide by the FirebaseUI to make a
-        // query in the database to fetch appropriate data
-        FirebaseRecyclerOptions<person> options
-                = new FirebaseRecyclerOptions.Builder<person>()
-                .setQuery(mbase, person.class)
-                .build();
-        // Connecting object of required Adapter class to
-        // the Adapter class itself
-        adapter = new personAdapter(options);
-        // Connecting Adapter class with the Recycler view*/
-        recyclerView.setAdapter(adapter);
-    }
+        // [START WRITING] This part is for writing data
+        Person person1 = new Person();
+        person1.setAge("25");
+        person1.setFirstname("Yuki");
+        person1.setLastname("Abe");
+        mDatabase.child(person1.getFirstname()).setValue(person1);
 
-    // Function to tell the app to start getting
-    // data from database on starting of the activity
-    @Override protected void onStart()
-    {
-        super.onStart();
-        adapter.startListening();
-    }
+        Person person2 = new Person();
+        person2.setAge("19?");
+        person2.setFirstname("Daijiro");
+        person2.setLastname("Sagane");
+        mDatabase.child(person2.getFirstname()).setValue(person2);
 
-    // Function to tell the app to stop getting
-    // data from database on stoping of the activity
-    @Override protected void onStop()
-    {
-        super.onStop();
-        adapter.stopListening();
+        Log.d(TAG, "Set person data in database");
+        // [END WRITING]
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "Get Datasnapshot");
+
+                Person person_A = snapshot.child("Yuki").getValue(Person.class);
+                Log.d(TAG, "get person_A");
+                Person person_B = snapshot.child("Daijiro").getValue(Person.class);
+                Log.d(TAG, "get person_B");
+
+                ArrayList<Person> peopleArray = new ArrayList<>();
+                peopleArray.add(person_A);
+                peopleArray.add(person_B);
+                Log.d(TAG, "Create peopleArray");
+
+                RecyclerView.Adapter adapter = new PersonAdapter(peopleArray);
+                Log.d(TAG, "Create PersonAdapter");
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Failed to read value
+            }
+        });
     }
 }

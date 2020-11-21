@@ -11,15 +11,14 @@ import android.widget.TextView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    private String[] dataset = new String[20];
+    private String[] dataset;
     private String TAG = "Adapter";
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     static class ViewHolder extends RecyclerView.ViewHolder {
-        private String TAG = "Adapter_ViewHolder";
-        // each data item is just a string in this case
+        private static String TAG = "Adapter_ViewHolder";
         TextView mTextView;
 
         ViewHolder(View v) {
@@ -44,9 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // create a new view
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.my_text_view, parent, false);
-
         // set the view's size, margins, paddings and layout parameters
-
         return new ViewHolder(view);
     }
 
