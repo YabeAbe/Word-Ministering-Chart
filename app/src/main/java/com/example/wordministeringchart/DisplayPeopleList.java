@@ -23,7 +23,7 @@ public class DisplayPeopleList extends AppCompatActivity {
         Log.d(TAG, "Start Activity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_people_list);
-        RecyclerView recyclerView = findViewById(R.id.recycler1);
+        RecyclerView recyclerView = findViewById(R.id.displayPeople);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager rLayoutManager= new LinearLayoutManager(this);
         recyclerView.setLayoutManager(rLayoutManager);
@@ -37,15 +37,19 @@ public class DisplayPeopleList extends AppCompatActivity {
         // [START WRITING] This part is for writing data
         Person person1 = new Person();
         person1.setAge("25");
-        person1.setFirstname("Yuki");
-        person1.setLastname("Abe");
-        mDatabase.child(person1.getFirstname()).setValue(person1);
+        person1.setFirstName("Yuki");
+        person1.setLastName("Abe");
+        person1.setPhoneNumber("08045008120");
+        person1.setMail("warutu4aria@gmail.com");
+        mDatabase.child(person1.getFirstName()).setValue(person1);
 
         Person person2 = new Person();
         person2.setAge("19?");
-        person2.setFirstname("Daijiro");
-        person2.setLastname("Sagane");
-        mDatabase.child(person2.getFirstname()).setValue(person2);
+        person2.setFirstName("Daijiro");
+        person2.setLastName("Sagane");
+        person2.setPhoneNumber("1234567890");
+        person2.setMail("something@gmail.com");
+        mDatabase.child(person2.getFirstName()).setValue(person2);
 
         Log.d(TAG, "Set person data in database");
         // [END WRITING]
@@ -65,14 +69,14 @@ public class DisplayPeopleList extends AppCompatActivity {
                 peopleArray.add(person_B);
                 Log.d(TAG, "Create peopleArray");
 
-                RecyclerView.Adapter adapter = new PersonAdapter(peopleArray);
+                RecyclerView.Adapter adapter = new PeopleAdapter(peopleArray);
                 Log.d(TAG, "Create PersonAdapter");
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Failed to read value
+                Log.w(TAG, "Failed to read value");
             }
         });
     }
