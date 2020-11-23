@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -79,5 +81,10 @@ public class DisplayPeopleList extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value");
             }
         });
+    }
+
+    public void addNewPerson(View view) {
+        Intent intent = new Intent(this, AddNewPerson.class);
+        startActivity(intent);
     }
 }

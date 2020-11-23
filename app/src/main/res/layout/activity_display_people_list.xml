@@ -4,11 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DisplayPeopleList">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/displayPeople"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="64dp"/>
+
+    <Button
+        android:id="@+id/addNewPerson"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:onClick="addNewPerson"
+        android:text=" + Add New Person"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayPeople">
+
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
