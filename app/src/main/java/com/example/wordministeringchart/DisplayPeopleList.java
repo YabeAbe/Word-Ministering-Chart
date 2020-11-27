@@ -1,6 +1,7 @@
 package com.example.wordministeringchart;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,16 +11,30 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
+/**
+ * Activity for displaying people list
+ *
+ * This Activity is used to display card list of each people info which contain in Firebase
+ * realtime database.
+ *
+ * @author Yuki Abe
+ *
+ */
 public class DisplayPeopleList extends AppCompatActivity {
-    private static String TAG = "DisplayPeopleList";
+    private static final String TAG = "DisplayPeopleList";
+    private final DatabaseReference peopleRef =
+            FirebaseDatabase.getInstance().getReference("People");
+    private ArrayList<Person> peopleArray = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "Start Activity");
@@ -32,18 +47,15 @@ public class DisplayPeopleList extends AppCompatActivity {
 
         Log.d(TAG, "create RecyclerView");
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        Log.d(TAG, "Create DatabaseReference");
-
-
-        // [START WRITING] This part is for writing data
+        // [START WRITING] This part is for writing test data
+        /*
         Person person1 = new Person();
         person1.setAge("25");
         person1.setFirstName("Yuki");
         person1.setLastName("Abe");
         person1.setPhoneNumber("08045008120");
         person1.setMail("warutu4aria@gmail.com");
-        mDatabase.child(person1.getFirstName()).setValue(person1);
+        peopleRef.push().setValue(person1);
 
         Person person2 = new Person();
         person2.setAge("19?");
@@ -51,40 +63,40 @@ public class DisplayPeopleList extends AppCompatActivity {
         person2.setLastName("Sagane");
         person2.setPhoneNumber("1234567890");
         person2.setMail("something@gmail.com");
-        mDatabase.child(person2.getFirstName()).setValue(person2);
+        peopleRef.push().setValue(person2);
 
         Log.d(TAG, "Set person data in database");
+         */
         // [END WRITING]
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        Query peopleQuery = peopleRef.orderByChild("firstName");
+        peopleQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d(TAG, "Get Datasnapshot");
-
-                Person person_A = snapshot.child("Yuki").getValue(Person.class);
-                Log.d(TAG, "get person_A");
-                Person person_B = snapshot.child("Daijiro").getValue(Person.class);
-                Log.d(TAG, "get person_B");
-
-                ArrayList<Person> peopleArray = new ArrayList<>();
-                peopleArray.add(person_A);
-                peopleArray.add(person_B);
-                Log.d(TAG, "Create peopleArray");
-
-                RecyclerView.Adapter adapter = new PeopleAdapter(peopleArray);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Person person = (Person) dataSnapshot.getValue(Person.class);
+                    Log.d(TAG, "Name is " + person.getFirstName());
+                    peopleArray.add(person);
+                }
+                PeopleAdapter adapter = new PeopleAdapter(peopleArray);
                 Log.d(TAG, "Create PersonAdapter");
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.w(TAG, "Failed to read value");
+
             }
         });
     }
 
     public void addNewPerson(View view) {
         Intent intent = new Intent(this, AddNewPerson.class);
+        startActivity(intent);
+    }
+
+    public void returnMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

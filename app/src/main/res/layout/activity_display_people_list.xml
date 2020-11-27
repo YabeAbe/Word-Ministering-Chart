@@ -14,15 +14,24 @@
         android:layout_marginBottom="64dp"/>
 
     <Button
-        android:id="@+id/addNewPerson"
+        android:id="@+id/returnMenuButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:onClick="returnMenu"
+        android:text="＜＜"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayPeople"/>
+
+    <Button
+        android:id="@+id/addNewPersonButton"
         android:layout_width="match_parent"
+        android:layout_marginLeft="64dp"
+        android:layout_marginStart="64dp"
         android:layout_height="64dp"
         android:onClick="addNewPerson"
         android:text=" + Add New Person"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayPeople">
-
-    </Button>
+        app:layout_constraintStart_toEndOf="@+id/returnMenuButton"
+        app:layout_constraintTop_toBottomOf="@+id/displayPeople" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

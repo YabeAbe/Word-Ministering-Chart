@@ -10,46 +10,43 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder> {
+public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder> {
     private final ArrayList<Person> personsArray;
     private static String TAG = "DisplayPeopleList_PeopleAdapter";
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        private static String TAG = "DisplayPeopleList_PeopleAdapter_ViewHolder";
+    static class PeopleViewHolder extends RecyclerView.ViewHolder {
         TextView firstName;
         TextView lastName;
 
-        ViewHolder(View view) {
+        public PeopleViewHolder(View view) {
             super(view);
             firstName = (TextView)view.findViewById(R.id.firstName);
             lastName = (TextView)view.findViewById(R.id.lastName);
         }
     }
 
-    PeopleAdapter(ArrayList<Person> personsArray) {
+    public PeopleAdapter(ArrayList<Person> personsArray) {
         this.personsArray = personsArray;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PeopleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_people, parent, false);
         Log.d(TAG, "Create ViewHolder by activity_people");
-        return new ViewHolder(view);
+        return new PeopleViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PeopleViewHolder holder, int position) {
         holder.firstName.setText((CharSequence) personsArray.get(position).getFirstName());
         holder.lastName.setText((CharSequence) personsArray.get(position).getLastName());
-        Log.d(TAG, "Bind Viewholder");
+        Log.d(TAG, "Bind ViewHolder");
     }
 
     @Override
     public int getItemCount() {
-        int itemCount = personsArray.size();
-        Log.d(TAG, "Get itemCount = " + personsArray.size());
-        return itemCount;
+        return personsArray.size();
     }
 }

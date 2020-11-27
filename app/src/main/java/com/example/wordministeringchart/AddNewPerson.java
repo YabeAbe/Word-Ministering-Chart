@@ -4,10 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class AddNewPerson extends AppCompatActivity {
-    Person newPerson = new Person();
+    private static final String TAG = "DisplayPeopleList_AddNewPerson";
+    private  DatabaseReference peopleRef =
+            FirebaseDatabase.getInstance().getReference("People");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +23,38 @@ public class AddNewPerson extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_person);
     }
 
-    public void addNewPersonData() {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void addNewPersonData(View view) {
+        Intent intent = new Intent(this, DisplayPeopleList.class);
+        // Set new person
+        Person newPerson = new Person();
+
+        // get First name and set in new person
+        EditText firstNameField = (EditText) findViewById(R.id.firstNameEdit);
+        String firstName = firstNameField.getText().toString();
+        newPerson.setFirstName(firstName);
+
+        // get Last name and set in new person
+        EditText lastNameField = (EditText) findViewById(R.id.lastNameEdit);
+        String lastName = lastNameField.getText().toString();
+        newPerson.setLastName(lastName);
+
+        // get Age and set in new person
+        EditText ageField = (EditText) findViewById((R.id.ageEdit));
+        String age = ageField.getText().toString();
+        newPerson.setAge(age);
+
+        // get Phone number and set in new person
+        EditText phoneField = (EditText) findViewById(R.id.phoneNumberEdit);
+        String phoneNumber = phoneField.getText().toString();
+        newPerson.setPhoneNumber(phoneNumber);
+
+        // get Mail and set in new person
+        EditText mailField = (EditText) findViewById(R.id.mailEdit);
+        String mail = mailField.getText().toString();
+        newPerson.setMail(mail);
+
+        peopleRef.push().setValue(newPerson);
+
         startActivity(intent);
     }
 }

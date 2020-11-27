@@ -1,16 +1,19 @@
 package com.example.wordministeringchart;
 
 public class Person {
-    private String firstName;
-    private String lastName;
-    private String age;
-    private String phoneNumber;
-    private String mail;
-    /*
-    private String facebook;
-    private String instagram;
-    private String twitter;
-     */
+    // Personal information
+    public String firstName;
+    public String lastName;
+    public String age;
+    public String phoneNumber;
+    public String mail;
+
+    public String facebook;
+    public String instagram;
+    public String twitter;
+
+    // Companion information
+    public String companionName;
 
     public Person() {}
 
@@ -45,7 +48,7 @@ public class Person {
     public void setMail(String mail) {
         this.mail = mail;
     }
-    /*
+
     public String getFacebook() {
         return facebook;
     }
@@ -64,5 +67,10 @@ public class Person {
     public void setTwitter(String twitter) {
         this.twitter = twitter;
     }
-     */
+    public String getCompanionName() {
+        return companionName;
+    }
+    public void setCompanionName(String companionName) {
+        this.companionName = companionName;
+    }
 }
