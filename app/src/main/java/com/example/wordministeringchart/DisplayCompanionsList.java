@@ -12,7 +12,7 @@ import java.util.Locale;
 public class DisplayCompanionsList extends AppCompatActivity {
     private RecyclerView recyclerView;
     private String[] myDataset = new String[20];
-    private String TAG = "DisplayCompanions";
+    private static final String TAG = "DisplayCompanions";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

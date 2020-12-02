@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,7 +34,8 @@ public class DisplayPeopleList extends AppCompatActivity {
     private static final String TAG = "DisplayPeopleList";
     private final DatabaseReference peopleRef =
             FirebaseDatabase.getInstance().getReference("People");
-    private ArrayList<Person> peopleArray = new ArrayList<>();
+    private final ArrayList<String> peopleKeyArray = new ArrayList<>();
+    private final Context DisplayPeopleContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,18 +76,18 @@ public class DisplayPeopleList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Person person = (Person) dataSnapshot.getValue(Person.class);
-                    Log.d(TAG, "Name is " + person.getFirstName());
-                    peopleArray.add(person);
+                    String personKey = dataSnapshot.getKey();
+                    Log.d(TAG, "Key: " + personKey);
+                    peopleKeyArray.add(personKey);
                 }
-                PeopleAdapter adapter = new PeopleAdapter(peopleArray);
+                PeopleAdapter adapter = new PeopleAdapter(DisplayPeopleContext, peopleKeyArray);
                 Log.d(TAG, "Create PersonAdapter");
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d(TAG, "Data reading is cancelled");
             }
         });
     }

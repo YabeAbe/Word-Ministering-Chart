@@ -1,32 +1,51 @@
 package com.example.wordministeringchart;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder> {
-    private final ArrayList<Person> personsArray;
-    private static String TAG = "DisplayPeopleList_PeopleAdapter";
+    private final ArrayList<String> personsKeyArray;
+    private static final String TAG = "DisplayPeopleList";
+    private final Context DisplayPeopleContext;
+    private final DatabaseReference peopleRef =
+            FirebaseDatabase.getInstance().getReference("People");
+
+    public PeopleAdapter(Context context, ArrayList<String> personsArray) {
+        this.personsKeyArray = personsArray;
+        this.DisplayPeopleContext = context;
+    }
 
     static class PeopleViewHolder extends RecyclerView.ViewHolder {
         TextView firstName;
         TextView lastName;
+        ConstraintLayout peopleLayout;
 
         public PeopleViewHolder(View view) {
             super(view);
-            firstName = (TextView)view.findViewById(R.id.firstName);
-            lastName = (TextView)view.findViewById(R.id.lastName);
+            firstName = view.findViewById(R.id.firstName);
+            lastName = view.findViewById(R.id.lastName);
+            peopleLayout = view.findViewById(R.id.peopleLayout);
         }
-    }
-
-    public PeopleAdapter(ArrayList<Person> personsArray) {
-        this.personsArray = personsArray;
     }
 
     @NonNull
@@ -34,19 +53,39 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
     public PeopleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_people, parent, false);
-        Log.d(TAG, "Create ViewHolder by activity_people");
         return new PeopleViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PeopleViewHolder holder, int position) {
-        holder.firstName.setText((CharSequence) personsArray.get(position).getFirstName());
-        holder.lastName.setText((CharSequence) personsArray.get(position).getLastName());
-        Log.d(TAG, "Bind ViewHolder");
+        String personKey = personsKeyArray.get(position);
+
+        peopleRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Person person =
+                        snapshot.child(personKey).getValue(Person.class);
+                holder.firstName.setText(person.getFirstName());
+                holder.lastName.setText(person.getLastName());
+                Log.d(TAG, "BindViewHolder for " + person.getFirstName() + " " +
+                        person.getLastName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        holder.peopleLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(DisplayPeopleContext, DisplayPerson.class);
+            //intent.putExtra("personKey", personKey);
+            startActivity(DisplayPeopleContext, intent, null);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return personsArray.size();
+        return personsKeyArray.size();
     }
 }

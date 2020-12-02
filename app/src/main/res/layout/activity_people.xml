@@ -11,6 +11,7 @@
     android:scrollbars="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/peopleLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
