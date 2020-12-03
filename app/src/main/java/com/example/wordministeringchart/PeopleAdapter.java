@@ -63,8 +63,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
         peopleRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Person person =
-                        snapshot.child(personKey).getValue(Person.class);
+                Person person = snapshot.child(personKey).getValue(Person.class);
                 holder.firstName.setText(person.getFirstName());
                 holder.lastName.setText(person.getLastName());
                 Log.d(TAG, "BindViewHolder for " + person.getFirstName() + " " +
@@ -73,13 +72,14 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d(TAG, "Failed to data reading");
             }
         });
 
         holder.peopleLayout.setOnClickListener(v -> {
             Intent intent = new Intent(DisplayPeopleContext, DisplayPerson.class);
-            //intent.putExtra("personKey", personKey);
+            intent.putExtra("personKey", personKey);
+            Log.d(TAG, "Success to putExtra " + personKey);
             startActivity(DisplayPeopleContext, intent, null);
         });
     }

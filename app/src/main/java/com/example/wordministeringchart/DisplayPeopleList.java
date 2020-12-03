@@ -49,28 +49,6 @@ public class DisplayPeopleList extends AppCompatActivity {
 
         Log.d(TAG, "create RecyclerView");
 
-        // [START WRITING] This part is for writing test data
-        /*
-        Person person1 = new Person();
-        person1.setAge("25");
-        person1.setFirstName("Yuki");
-        person1.setLastName("Abe");
-        person1.setPhoneNumber("08045008120");
-        person1.setMail("warutu4aria@gmail.com");
-        peopleRef.push().setValue(person1);
-
-        Person person2 = new Person();
-        person2.setAge("19?");
-        person2.setFirstName("Daijiro");
-        person2.setLastName("Sagane");
-        person2.setPhoneNumber("1234567890");
-        person2.setMail("something@gmail.com");
-        peopleRef.push().setValue(person2);
-
-        Log.d(TAG, "Set person data in database");
-         */
-        // [END WRITING]
-
         Query peopleQuery = peopleRef.orderByChild("firstName");
         peopleQuery.addValueEventListener(new ValueEventListener() {
             @Override
