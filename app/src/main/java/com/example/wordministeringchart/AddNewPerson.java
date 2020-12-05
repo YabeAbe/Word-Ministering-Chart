@@ -53,8 +53,31 @@ public class AddNewPerson extends AppCompatActivity {
         String mail = mailField.getText().toString();
         newPerson.setMail(mail);
 
+        // get Facebook and set in new person
+        EditText facebookField = (EditText) findViewById(R.id.facebookEdit);
+        String facebook = facebookField.getText().toString();
+        newPerson.setFacebook(facebook);
+
+        // get Instagram and set in new person
+        EditText instagramField = (EditText) findViewById(R.id.instagramEdit);
+        String instagram = instagramField.getText().toString();
+        newPerson.setInstagram(instagram);
+
+        // get twitter and set in new person
+        EditText twitterField = (EditText) findViewById(R.id.twitterEdit);
+        String twitter = twitterField.getText().toString();
+        newPerson.setTwitter(twitter);
+
         peopleRef.push().setValue(newPerson);
 
+        Toast toast = Toast.makeText(this, firstName + " " + lastName, Toast.LENGTH_LONG);
+        toast.show();
+
+        startActivity(intent);
+    }
+
+    public void cancelAddPerson(View view) {
+        Intent intent = new Intent(this, DisplayPeopleList.class);
         startActivity(intent);
     }
 }

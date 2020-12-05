@@ -8,8 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".AddNewPerson">
+        android:layout_height="match_parent" >
 
         <TextView
             android:id="@+id/firstNameLabel"
@@ -181,28 +180,26 @@
             app:layout_constraintTop_toBottomOf="@id/twitterLabel" />
 
         <Button
-            android:id="@+id/addNewPersonDataButton"
+            android:id="@+id/updatePersonButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="addNewPersonData"
-            android:text="Add Person"
+            android:onClick="updatePerson"
+            android:text="Apply Change"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/twitterEdit" />
 
         <Button
-            android:id="@+id/cancelAddPersonButton"
+            android:id="@+id/cancelUpdateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="cancelAddPerson"
-            android:text="Cancel"
+            android:onClick="cancelUpdate"
+            android:text="Cancel to change"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addNewPersonDataButton" />
+            app:layout_constraintTop_toBottomOf="@+id/updatePersonButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

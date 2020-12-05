@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WordMinisteringChart">
-        <activity android:name=".DisplayPerson"></activity>
+        <activity android:name=".EditPerson" />
+        <activity android:name=".DisplayPerson" />
         <activity android:name=".AddNewPerson" />
         <activity android:name=".DisplayPeopleList" />
         <activity android:name=".DisplayCompanionsList" />
