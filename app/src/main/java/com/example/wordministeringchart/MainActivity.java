@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayCompanionsList(View view) {
-        Intent intent = new Intent(this, DisplayCompanionsList.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, DisplayCompanionsList.class);
+        //startActivity(intent);
     }
 
     public void displayPeopleList(View view) {

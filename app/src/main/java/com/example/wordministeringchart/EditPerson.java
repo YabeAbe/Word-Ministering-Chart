@@ -46,14 +46,16 @@ public class EditPerson extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Person person = snapshot.getValue(Person.class);
-                firstName.setText(person.getFirstName());
-                lastName.setText(person.getLastName());
-                age.setText(person.getAge());
-                phoneNumber.setText(person.getPhoneNumber());
-                mail.setText(person.getMail());
-                facebook.setText(person.getFacebook());
-                instagram.setText(person.getInstagram());
-                twitter.setText(person.getTwitter());
+                if (person != null) {
+                    firstName.setText(person.getFirstName());
+                    lastName.setText(person.getLastName());
+                    age.setText(person.getAge());
+                    phoneNumber.setText(person.getPhoneNumber());
+                    mail.setText(person.getMail());
+                    facebook.setText(person.getFacebook());
+                    instagram.setText(person.getInstagram());
+                    twitter.setText(person.getTwitter());
+                }
             }
 
             @Override
@@ -108,8 +110,6 @@ public class EditPerson extends AppCompatActivity {
         startActivity(updatePersonIntent);
     }
     public void cancelUpdate(View view) {
-        Intent cancelIntent = new Intent(this, DisplayPerson.class);
-        cancelIntent.putExtra("personKey", personKey);
-        startActivity(cancelIntent);
+        finish();
     }
 }

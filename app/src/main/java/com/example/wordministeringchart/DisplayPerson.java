@@ -20,12 +20,13 @@ import org.w3c.dom.Text;
 public class DisplayPerson extends AppCompatActivity {
     private static final String TAG = "DisplayPerson";
     private String personKey;
+    private String fullNameExtra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_person);
-        TextView headerName = findViewById(R.id.headerName);
+        TextView headerText = findViewById(R.id.headerText);
         TextView firstName = findViewById(R.id.firstName);
         TextView lastName = findViewById(R.id.lastName);
         TextView age = findViewById(R.id.age);
@@ -49,16 +50,22 @@ public class DisplayPerson extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Person person = snapshot.getValue(Person.class);
-                headerName.setText(person.getFirstName() + " " +person.getLastName() + "'s Information");
-                firstName.setText(person.getFirstName());
-                lastName.setText(person.getLastName());
-                age.setText(person.getAge());
-                phoneNumber.setText(person.getPhoneNumber());
-                mail.setText(person.getMail());
-                facebook.setText(person.getFacebook());
-                instagram.setText(person.getInstagram());
-                twitter.setText(person.getTwitter());
-                companion.setText(person.getCompanionName());
+                if (person != null) {
+                    String fullName = person.getFirstName() + " " +person.getLastName();
+                    String displayText = fullName + "'s Information";
+                    headerText.setText(displayText);
+                    firstName.setText(person.getFirstName());
+                    lastName.setText(person.getLastName());
+                    age.setText(person.getAge());
+                    phoneNumber.setText(person.getPhoneNumber());
+                    mail.setText(person.getMail());
+                    facebook.setText(person.getFacebook());
+                    instagram.setText(person.getInstagram());
+                    twitter.setText(person.getTwitter());
+                    companion.setText(person.getCompanionName());
+
+                    fullNameExtra = fullName;
+                }
             }
 
             @Override
@@ -68,20 +75,21 @@ public class DisplayPerson extends AppCompatActivity {
         });
     }
 
+    // Edit this displayed personal information
     public void EditPerson(View view) {
         Intent intent = new Intent(this, EditPerson.class);
         intent.putExtra("personKey", personKey);
         startActivity(intent);
     }
-    /*
+    // Delete this personal information
     public void deletePerson(View view) {
-        Intent intent new Intent(this, )
-    }
-
-     */
-
-    public void backToPeopleList(View view) {
-        Intent intent = new Intent(this, DisplayPeopleList.class);
+        Intent intent = new Intent(this, DeletePerson.class);
+        intent.putExtra("personKey", personKey);
+        intent.putExtra("fullName", fullNameExtra);
         startActivity(intent);
+    }
+    // Back to people list
+    public void backToPeopleList(View view) {
+        finish();
     }
 }

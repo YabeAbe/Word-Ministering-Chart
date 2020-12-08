@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WordMinisteringChart">
+        <activity android:name=".DeletePerson"></activity>
         <activity android:name=".EditPerson" />
         <activity android:name=".DisplayPerson" />
         <activity android:name=".AddNewPerson" />
         <activity android:name=".DisplayPeopleList" />
-        <activity android:name=".DisplayCompanionsList" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

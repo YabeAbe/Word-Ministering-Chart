@@ -26,7 +26,7 @@ import static androidx.core.content.ContextCompat.startActivity;
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder> {
     private final ArrayList<String> personsKeyArray;
     private static final String TAG = "DisplayPeopleList";
-    private final Context DisplayPeopleContext;
+    public final Context DisplayPeopleContext;
     private final DatabaseReference peopleRef =
             FirebaseDatabase.getInstance().getReference("People");
 
@@ -64,10 +64,12 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Person person = snapshot.child(personKey).getValue(Person.class);
-                holder.firstName.setText(person.getFirstName());
-                holder.lastName.setText(person.getLastName());
-                Log.d(TAG, "BindViewHolder for " + person.getFirstName() + " " +
-                        person.getLastName());
+                if (person != null) {
+                    holder.firstName.setText(person.getFirstName());
+                    holder.lastName.setText(person.getLastName());
+                    Log.d(TAG, "BindViewHolder for " + person.getFirstName() + " " +
+                            person.getLastName());
+                }
             }
 
             @Override

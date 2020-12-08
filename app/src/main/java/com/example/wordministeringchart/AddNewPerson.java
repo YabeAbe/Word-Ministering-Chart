@@ -70,7 +70,8 @@ public class AddNewPerson extends AppCompatActivity {
 
         peopleRef.push().setValue(newPerson);
 
-        Toast toast = Toast.makeText(this, firstName + " " + lastName, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(this, firstName + " " + lastName +
+                " is added", Toast.LENGTH_LONG);
         toast.show();
 
         startActivity(intent);
