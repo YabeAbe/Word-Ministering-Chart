@@ -19,6 +19,11 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(intent);
     }
 
+    public void displayFamiliesList(View view) {
+        Intent intent = new Intent(this, DisplayFamiliesList.class);
+        startActivity(intent);
+    }
+
     public void displayPeopleList(View view) {
         Intent intent = new Intent(this, DisplayPeopleList.class);
         startActivity(intent);

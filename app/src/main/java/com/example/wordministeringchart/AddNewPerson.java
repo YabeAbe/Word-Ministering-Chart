@@ -28,17 +28,17 @@ public class AddNewPerson extends AppCompatActivity {
         // Set new person
         Person newPerson = new Person();
 
-        // get First name and set in new person
+        // get First name field and set in new person
         EditText firstNameField = (EditText) findViewById(R.id.firstNameEdit);
         String firstName = firstNameField.getText().toString();
         newPerson.setFirstName(firstName);
 
-        // get Last name and set in new person
+        // get Last name field and set in new person
         EditText lastNameField = (EditText) findViewById(R.id.lastNameEdit);
         String lastName = lastNameField.getText().toString();
         newPerson.setLastName(lastName);
 
-        // get Age and set in new person
+        // get Age field and set in new person
         EditText ageField = (EditText) findViewById((R.id.ageEdit));
         String age = ageField.getText().toString();
         newPerson.setAge(age);
@@ -48,22 +48,22 @@ public class AddNewPerson extends AppCompatActivity {
         String phoneNumber = phoneField.getText().toString();
         newPerson.setPhoneNumber(phoneNumber);
 
-        // get Mail and set in new person
+        // get Mail field and set in new person
         EditText mailField = (EditText) findViewById(R.id.mailEdit);
         String mail = mailField.getText().toString();
         newPerson.setMail(mail);
 
-        // get Facebook and set in new person
+        // get Facebook field and set in new person
         EditText facebookField = (EditText) findViewById(R.id.facebookEdit);
         String facebook = facebookField.getText().toString();
         newPerson.setFacebook(facebook);
 
-        // get Instagram and set in new person
+        // get Instagram field and set in new person
         EditText instagramField = (EditText) findViewById(R.id.instagramEdit);
         String instagram = instagramField.getText().toString();
         newPerson.setInstagram(instagram);
 
-        // get twitter and set in new person
+        // get twitter field and set in new person
         EditText twitterField = (EditText) findViewById(R.id.twitterEdit);
         String twitter = twitterField.getText().toString();
         newPerson.setTwitter(twitter);

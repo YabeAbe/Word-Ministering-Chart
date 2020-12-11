@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WordMinisteringChart">
-        <activity android:name=".DeletePerson"></activity>
+        <activity android:name=".AddFamilyMember"></activity>
+        <activity android:name=".AddNewFamily" />
+        <activity android:name=".DisplayFamilyDetail" />
+        <activity android:name=".DisplayFamiliesList" />
+        <activity android:name=".DeletePerson" />
         <activity android:name=".EditPerson" />
         <activity android:name=".DisplayPerson" />
         <activity android:name=".AddNewPerson" />

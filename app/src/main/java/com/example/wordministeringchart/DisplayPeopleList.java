@@ -44,6 +44,7 @@ public class DisplayPeopleList extends AppCompatActivity {
         Log.d(TAG, "Start Activity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_people_list);
+
         RecyclerView recyclerView = findViewById(R.id.displayPeople);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager rLayoutManager= new LinearLayoutManager(this);
@@ -67,7 +68,7 @@ public class DisplayPeopleList extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.d(TAG, "Data reading is cancelled");
+                Log.d(TAG, "Data reading failed");
             }
         });
     }
