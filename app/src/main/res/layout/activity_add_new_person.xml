@@ -1,52 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/addFirstNameLinear"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".AddNewPerson">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/firstNameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:text="First name: "
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/firstNameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:hint="Enter first name"
             android:inputType="textPersonName"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addLastNameLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/addFirstNameLinear">
 
         <TextView
             android:id="@+id/lastNameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:text="Last name: "
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstNameEdit" />
+            app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
 
         <EditText
             android:id="@+id/lastNameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:hint="Enter last name"
             android:inputType="textPersonName"
             android:textSize="14sp"
@@ -54,10 +69,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lastNameLabel" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addAgeLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/addLastNameLinear">
+
         <TextView
             android:id="@+id/ageLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:text="Age: "
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,17 +94,30 @@
             android:id="@+id/ageEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:hint="Enter Age"
             android:inputType="textPersonName"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ageLabel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addPhoneNumberLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/addAgeLinear">
 
         <TextView
             android:id="@+id/phoneNumberLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:text="Phone: "
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -89,17 +128,30 @@
             android:id="@+id/phoneNumberEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:hint="Enter phone number"
             android:inputType="phone"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addMailLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/addPhoneNumberLinear">
 
         <TextView
             android:id="@+id/mailLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:text="Mail: "
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -110,17 +162,30 @@
             android:id="@+id/mailEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:hint="Enter phone number"
             android:inputType="textWebEmailAddress"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mailLabel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addFacebookLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/addMailLinear">
 
         <TextView
             android:id="@+id/facebookLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:text="Facebook:"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -131,17 +196,30 @@
             android:id="@+id/facebookEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:hint="Enter Facebook Address"
             android:inputType="textWebEmailAddress"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/facebookLabel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addInstagramLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/addFacebookLinear">
 
         <TextView
             android:id="@+id/instagramlabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:text="Instagram: "
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -149,60 +227,78 @@
             app:layout_constraintTop_toBottomOf="@+id/facebookEdit" />
 
         <EditText
-            android:id="@+id/instagramEdit"
+            android:id="@+id/addInstagramEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:hint="Enter Instagram Address"
             android:inputType="textWebEmailAddress"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instagramlabel" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/twitterLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Twitter:"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instagramEdit" />
+    <LinearLayout
+        android:id="@+id/addTwitterLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/addInstagramLinear">
 
-        <EditText
-            android:id="@+id/twitterEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter Twitter account"
-            android:inputType="textWebEmailAddress"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/twitterLabel" />
 
-        <Button
-            android:id="@+id/addNewPersonDataButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="addNewPersonData"
-            android:text="Add Person"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twitterEdit" />
+    <TextView
+        android:id="@+id/twitterLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Twitter:"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/twitterEdit" />
 
-        <Button
-            android:id="@+id/cancelAddPersonButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="cancelAddPerson"
-            android:text="Cancel"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addNewPersonDataButton" />
+    <EditText
+        android:id="@+id/twitterEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Enter Twitter account"
+        android:inputType="textWebEmailAddress"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/twitterLabel" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/addNewPersonDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="addNewPersonData"
+        android:text="Add Person"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTwitterLinear" />
+
+    <Button
+        android:id="@+id/cancelAddPersonButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="cancelAddPerson"
+        android:text="Cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addNewPersonDataButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

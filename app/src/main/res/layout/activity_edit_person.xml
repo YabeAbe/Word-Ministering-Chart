@@ -10,174 +10,292 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+    <LinearLayout
+        android:id="@+id/firstNameLiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="match_parent">
+
         <TextView
             android:id="@+id/firstNameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="First name: "
+            android:layout_marginBottom="16dp"
+            android:text="First name:"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginLeft="16dp" />
 
-        <EditText
-            android:id="@+id/firstNameEdit"
+
+        <TextView
+            android:id="@+id/firstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter first name"
-            android:inputType="textPersonName"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="Enter your first name"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstNameLabel" />
+            app:layout_constraintStart_toEndOf="@+id/firstNameLabel" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lastNameLiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/firstNameLiner">
 
         <TextView
             android:id="@+id/lastNameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last name: "
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Enter yourLast name:"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstNameEdit" />
-
-        <EditText
-            android:id="@+id/lastNameEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter last name"
-            android:inputType="textPersonName"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastNameLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/firstNameLabel"
+            android:layout_marginLeft="16dp" />
 
         <TextView
-            android:id="@+id/ageLabel"
+            android:id="@+id/lastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Age: "
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Enter last name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/lastNameLabel"
+            app:layout_constraintTop_toBottomOf="@+id/firstName" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ageLiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/lastNameLiner">
+
+        <TextView
+            android:id="@+id/agelabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Age:"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastNameEdit" />
+            app:layout_constraintTop_toBottomOf="@+id/lastNameLabel"
+            android:layout_marginLeft="16dp" />
 
-        <EditText
-            android:id="@+id/ageEdit"
+        <TextView
+            android:id="@+id/age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter Age"
-            android:inputType="textPersonName"
-            android:textSize="14sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Enter your age"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ageLabel" />
+            app:layout_constraintHorizontal_bias="0.586"
+            app:layout_constraintStart_toEndOf="@+id/agelabel"
+            app:layout_constraintTop_toBottomOf="@+id/lastName" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/phoneNumberLiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/ageLiner">
         <TextView
             android:id="@+id/phoneNumberLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phone: "
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Phone number:"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ageEdit" />
+            app:layout_constraintTop_toBottomOf="@+id/agelabel"
+            android:layout_marginLeft="16dp" />
 
-        <EditText
-            android:id="@+id/phoneNumberEdit"
+        <TextView
+            android:id="@+id/phoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:hint="Enter phone number"
-            android:inputType="phone"
-            android:textSize="14sp"
+            android:inputType="textWebEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel" />
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toEndOf="@+id/phoneNumberLabel"
+            app:layout_constraintTop_toBottomOf="@+id/age" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/mailLiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/phoneNumberLiner" >
         <TextView
             android:id="@+id/mailLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mail: "
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Mail:"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneNumberEdit" />
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel"
+            android:layout_marginLeft="16dp" />
 
-        <EditText
-            android:id="@+id/mailEdit"
+        <TextView
+            android:id="@+id/mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter phone number"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Enter email-adress"
             android:inputType="textWebEmailAddress"
-            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mailLabel" />
+            app:layout_constraintHorizontal_bias="0.607"
+            app:layout_constraintStart_toEndOf="@+id/mailLabel"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/facebookLiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/mailLiner" >
         <TextView
             android:id="@+id/facebookLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             android:text="Facebook:"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mailEdit" />
-
-        <EditText
-            android:id="@+id/facebookEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter Facebook Address"
-            android:inputType="textWebEmailAddress"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/facebookLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/mailLabel" />
 
         <TextView
-            android:id="@+id/instagramlabel"
+            android:id="@+id/facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Instagram: "
-            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Enter Facebook account"
+            android:inputType="textWebEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/facebookEdit" />
-
-        <EditText
-            android:id="@+id/instagramEdit"
+            app:layout_constraintHorizontal_bias="0.558"
+            app:layout_constraintStart_toEndOf="@id/facebookLabel"
+            app:layout_constraintTop_toBottomOf="@id/mail" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/instagramLiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/facebookLiner" >
+        <TextView
+            android:id="@+id/instagramLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter Instagram Address"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Instagram:"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/facebookLabel" />
+
+        <TextView
+            android:id="@+id/instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Enter Instagram account"
             android:inputType="textWebEmailAddress"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instagramlabel" />
+            app:layout_constraintHorizontal_bias="0.551"
+            app:layout_constraintStart_toEndOf="@id/instagramLabel"
+            app:layout_constraintTop_toBottomOf="@id/facebook" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/twitterLiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/instagramLiner" >
         <TextView
             android:id="@+id/twitterLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             android:text="Twitter:"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instagramEdit" />
+            app:layout_constraintTop_toBottomOf="@+id/instagramLabel" />
+
+        <TextView
+            android:id="@+id/twitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="Enter Twitter account"
+            android:inputType="textWebEmailAddress"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.584"
+            app:layout_constraintStart_toEndOf="@id/twitterLabel"
+            app:layout_constraintTop_toBottomOf="@id/instagram" />
+    </LinearLayout>
 
         <EditText
             android:id="@+id/twitterEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter Twitter account"
-            android:inputType="textWebEmailAddress"
+            android:hint="Confirm you information again"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/twitterLabel" />
+            app:layout_constraintTop_toBottomOf="@id/twitterLiner" />
 
         <Button
             android:id="@+id/updatePersonButton"

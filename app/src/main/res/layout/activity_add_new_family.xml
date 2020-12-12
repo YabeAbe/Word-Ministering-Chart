@@ -66,21 +66,26 @@
                 android:hint="Address"
                 android:textSize="14sp" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="next"
-                android:onClick="addNewFamilyData" />
+                android:layout_marginLeft="64dp"
+                android:layout_marginRight="38dp"
+                android:onClick="addNewFamilyData"
+                android:text="next" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cancel"
-                android:onClick="cancelAddNewFamily"/>
+                android:layout_marginLeft="38dp"
+                android:layout_marginRight="64dp"
+                android:onClick="cancelAddNewFamily"
+                android:text="Cancel" />
         </LinearLayout>
     </LinearLayout>
 

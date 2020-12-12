@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:text="First name:"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,18 +50,21 @@
             app:layout_constraintStart_toEndOf="@+id/firstNameLabel" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/lastNameLiner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/firstNameLiner">
+
         <TextView
             android:id="@+id/lastNameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:text="Last name:"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,20 +82,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lastNameLabel"
             app:layout_constraintTop_toBottomOf="@+id/firstName" />
-
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/ageLiner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/lastNameLiner">
+
         <TextView
             android:id="@+id/agelabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:text="Age:"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,6 +118,7 @@
             app:layout_constraintStart_toEndOf="@+id/agelabel"
             app:layout_constraintTop_toBottomOf="@+id/lastName" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/phoneNumberLiner"
         android:layout_width="match_parent"
@@ -124,6 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:text="Phone number:"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,6 +142,7 @@
             android:id="@+id/phoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
@@ -143,6 +152,7 @@
             app:layout_constraintStart_toEndOf="@+id/phoneNumberLabel"
             app:layout_constraintTop_toBottomOf="@+id/age" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/mailLiner"
         android:layout_width="match_parent"
@@ -166,6 +176,7 @@
             android:id="@+id/mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
@@ -175,6 +186,7 @@
             app:layout_constraintStart_toEndOf="@+id/mailLabel"
             app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/facebookLiner"
         android:layout_width="match_parent"
@@ -198,6 +210,7 @@
             android:id="@+id/facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
@@ -230,6 +243,7 @@
             android:id="@+id/instagram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
@@ -239,6 +253,7 @@
             app:layout_constraintStart_toEndOf="@id/instagramLabel"
             app:layout_constraintTop_toBottomOf="@id/facebook" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/twitterLiner"
         android:layout_width="match_parent"
@@ -262,6 +277,7 @@
             android:id="@+id/twitter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
@@ -295,6 +311,7 @@
             android:id="@+id/companion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
