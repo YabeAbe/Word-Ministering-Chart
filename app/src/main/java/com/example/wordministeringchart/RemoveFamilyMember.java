@@ -13,11 +13,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
-public class DisplayMemberOption extends AppCompatActivity {
+public class RemoveFamilyMember extends AppCompatActivity {
     private static final String TAG = "DisplayFamilyMemberOpt";
     private String personKey;
     private String fullNameExtra;
@@ -25,7 +24,7 @@ public class DisplayMemberOption extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_member_option);
+        setContentView(R.layout.activity_remove_family_member);
         TextView headerText = findViewById(R.id.headerText);
         TextView firstName = findViewById(R.id.firstName);
         TextView lastName = findViewById(R.id.lastName);
@@ -73,13 +72,26 @@ public class DisplayMemberOption extends AppCompatActivity {
     }
 
     // Add this person into previous family
-    public void addMember(View view) {
+    public void removeMember(View view) {
         Bundle bd = getIntent().getExtras();
         personKey = (String) bd.get("personKey");
         String newFamilyKey = (String) bd.get("newFamilyKey");
-        DatabaseReference FamilyMemberRef =
-                FirebaseDatabase.getInstance().getReference("FamilyMember");
-        FamilyMemberRef.child(newFamilyKey).push().setValue(personKey);
+        DatabaseReference familyMemberRef =
+                FirebaseDatabase.getInstance().getReference("FamilyMember/" + newFamilyKey);
+        Query familyMemberQuery = familyMemberRef.orderByValue().equalTo(personKey);
+        familyMemberQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        familyMemberRef.child(newFamilyKey).push().setValue(personKey);
         Log.d(TAG, "PersonKey added into FamilyMember");
 
         Intent intent = new Intent(this, AddFamilyMember.class);

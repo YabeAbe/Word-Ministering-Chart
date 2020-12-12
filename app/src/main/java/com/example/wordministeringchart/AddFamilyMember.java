@@ -82,7 +82,9 @@ public class AddFamilyMember extends AppCompatActivity {
                     familyMemberKeyArray.add(personKey);
                     Log.d(TAG, "Added personKey: " + personKey);
                 }
-                FamilyMemberAdapter familyMemberAdapter = new FamilyMemberAdapter(familyMemberKeyArray);
+                FamilyMemberAdapter familyMemberAdapter =
+                        new FamilyMemberAdapter(addFamilyMemberContext, familyMemberKeyArray,
+                                newFamilyKey);
                 familyMemberRecycler.setAdapter(familyMemberAdapter);
             }
 
@@ -113,7 +115,8 @@ public class AddFamilyMember extends AppCompatActivity {
                     peopleKeyArray.add(personKey);
                 }
                 FamilyMemberOptionAdapter adapter =
-                        new FamilyMemberOptionAdapter(addFamilyMemberContext, peopleKeyArray, newFamilyKey);
+                        new FamilyMemberOptionAdapter(addFamilyMemberContext, peopleKeyArray,
+                                newFamilyKey);
                 familyMemberOptionRecycler.setAdapter(adapter);
 
             }
@@ -123,9 +126,5 @@ public class AddFamilyMember extends AppCompatActivity {
                 Log.d(TAG, "Data reading failed");
             }
         });
-    }
-
-    public void addNewFamilyMember(View viw) {
-
     }
 }

@@ -1,5 +1,7 @@
 package com.example.wordministeringchart;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,26 +21,34 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class FamilyMemberAdapter extends RecyclerView.Adapter<FamilyMemberAdapter.FamilyMemberViewHolder> {
     private static final String TAG = "FamilyMember_ad";
     private final ArrayList<String> familyMemberKeyArray;
     private final DatabaseReference peopleRef =
             FirebaseDatabase.getInstance().getReference("People");
+    private final Context addFamilyMemberContext;
+    private String newFamilyKey;
 
-    public FamilyMemberAdapter(ArrayList<String> familyMemberKeyArray) {
+    public FamilyMemberAdapter(Context context, ArrayList<String> familyMemberKeyArray, String newFamilyKey) {
         this.familyMemberKeyArray = familyMemberKeyArray;
+        this.addFamilyMemberContext = context;
+        this.newFamilyKey = newFamilyKey;
     }
 
     static class FamilyMemberViewHolder extends RecyclerView.ViewHolder {
-        TextView firstName;
-        TextView lastName;
-        TextView age;
+        public TextView firstName;
+        public TextView lastName;
+        public TextView age;
+        public ConstraintLayout peopleLayout;
 
         public FamilyMemberViewHolder(View view) {
             super(view);
             firstName = view.findViewById(R.id.firstName);
             lastName = view.findViewById(R.id.lastName);
             age = view.findViewById(R.id.age);
+            peopleLayout = view.findViewById(R.id.peopleLayout);
         }
     }
 
@@ -68,6 +79,18 @@ public class FamilyMemberAdapter extends RecyclerView.Adapter<FamilyMemberAdapte
                 Log.d(TAG, "Data reading Failed");
             }
         });
+
+        /*
+        // onClickListener for remove this person from family
+        holder.peopleLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(addFamilyMemberContext, RemoveFamilyMember.class);
+            intent.putExtra("personKey", personKey);
+            intent.putExtra("newFamilyKey", newFamilyKey);
+            Log.d(TAG, "Success to putExtra " + personKey + " " + newFamilyKey);
+            startActivity(addFamilyMemberContext, intent, null);
+        });
+
+         */
 
     }
 
