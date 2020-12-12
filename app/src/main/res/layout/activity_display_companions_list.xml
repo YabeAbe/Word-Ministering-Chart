@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DisplayFamiliesList">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/companionRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="64dp"/>
+
+    <Button
+        android:id="@+id/returnMenuButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:onClick="returnMenu"
+        android:text="＜＜"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/companionRecycler"/>
+
+    <Button
+        android:id="@+id/addNewFamilyButton"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_height="64dp"
+        android:onClick="addNewFamily"
+        android:text=" + Create New Companion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/returnMenuButton"
+        app:layout_constraintTop_toBottomOf="@+id/companionRecycler" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

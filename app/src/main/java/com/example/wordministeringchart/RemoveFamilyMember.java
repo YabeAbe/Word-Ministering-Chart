@@ -16,6 +16,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class RemoveFamilyMember extends AppCompatActivity {
     private static final String TAG = "DisplayFamilyMemberOpt";
     private String personKey;
@@ -70,7 +72,6 @@ public class RemoveFamilyMember extends AppCompatActivity {
             }
         });
     }
-
     // Add this person into previous family
     public void removeMember(View view) {
         Bundle bd = getIntent().getExtras();
@@ -78,10 +79,14 @@ public class RemoveFamilyMember extends AppCompatActivity {
         String newFamilyKey = (String) bd.get("newFamilyKey");
         DatabaseReference familyMemberRef =
                 FirebaseDatabase.getInstance().getReference("FamilyMember/" + newFamilyKey);
+        ArrayList<String> peopleKeyArray = new ArrayList<>();
+
         Query familyMemberQuery = familyMemberRef.orderByValue().equalTo(personKey);
         familyMemberQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String familyMemberKey = snapshot.getValue(String.class);
+                Log.d(TAG, "Get key: " + familyMemberKey);
             }
 
             @Override
@@ -98,6 +103,7 @@ public class RemoveFamilyMember extends AppCompatActivity {
         intent.putExtra("newFamilyKey", newFamilyKey);
         startActivity(intent);
     }
+
 
     // Back to family member adding menu
     public void cancel(View view) {

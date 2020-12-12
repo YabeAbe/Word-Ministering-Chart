@@ -62,6 +62,7 @@ public class DisplayFamiliesList extends AppCompatActivity {
     }
 
     public void returnMenu(View view) {
-        finish();
+        Intent intent = new Intent (this, MainActivity.class);
+        startActivity(intent);
     }
 }
