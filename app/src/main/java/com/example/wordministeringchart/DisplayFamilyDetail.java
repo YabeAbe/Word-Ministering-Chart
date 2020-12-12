@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -67,7 +68,7 @@ public class DisplayFamilyDetail extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String memberKey = dataSnapshot.getValue(String.class);
-                    Log.d(TAG, "MemberKey: ");
+                    Log.d(TAG, "MemberKey: " + memberKey);
                     memberKeyArray.add(memberKey);
                 }
                 MemberAdapter adapter = new MemberAdapter(displayFamilyDetailContext, memberKeyArray);
@@ -81,6 +82,14 @@ public class DisplayFamilyDetail extends AppCompatActivity {
         });
 
     }
+
+    public void editFamily(View view) {
+            Intent intent = new Intent(this, AddFamilyMember.class);
+            intent.putExtra("newFamilyKey", familyKey);
+            Log.d(TAG, "PutExtra: " + familyKey);
+            startActivity(intent);
+    }
+
     public void back(View view) {
         finish();
     }

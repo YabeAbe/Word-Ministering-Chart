@@ -44,11 +44,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit family"/>
+            android:text="Edit family"
+            android:onClick="editFamily"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="delete family"/>
+            android:text="delete family"
+            />
     </LinearLayout>
 
 
