@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <TextView
         android:id="@+id/headerText"
         android:layout_width="wrap_content"
@@ -16,7 +15,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/firstNameLabel"
         android:layout_width="wrap_content"
@@ -28,8 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerText"
         android:layout_marginLeft="16dp" />
-
-
     <TextView
         android:id="@+id/firstName"
         android:layout_width="wrap_content"
@@ -42,7 +38,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/firstNameLabel"
         app:layout_constraintTop_toBottomOf="@+id/headerText" />
-
     <TextView
         android:id="@+id/lastNameLabel"
         android:layout_width="wrap_content"
@@ -54,7 +49,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstNameLabel"
         android:layout_marginLeft="16dp" />
-
     <TextView
         android:id="@+id/lastName"
         android:layout_width="wrap_content"
@@ -66,7 +60,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lastNameLabel"
         app:layout_constraintTop_toBottomOf="@+id/firstName" />
-
     <TextView
         android:id="@+id/agelabel"
         android:layout_width="wrap_content"
@@ -78,7 +71,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastNameLabel"
         android:layout_marginLeft="16dp" />
-
     <TextView
         android:id="@+id/age"
         android:layout_width="wrap_content"
@@ -92,7 +84,6 @@
         app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toEndOf="@+id/agelabel"
         app:layout_constraintTop_toBottomOf="@+id/lastName" />
-
     <TextView
         android:id="@+id/phoneNumberLabel"
         android:layout_width="wrap_content"
@@ -104,7 +95,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/agelabel"
         android:layout_marginLeft="16dp" />
-
     <TextView
         android:id="@+id/phoneNumber"
         android:layout_width="wrap_content"
@@ -117,7 +107,6 @@
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toEndOf="@+id/phoneNumberLabel"
         app:layout_constraintTop_toBottomOf="@+id/age" />
-
     <TextView
         android:id="@+id/mailLabel"
         android:layout_width="wrap_content"
@@ -130,7 +119,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel"
         android:layout_marginLeft="16dp" />
-
     <TextView
         android:id="@+id/mail"
         android:layout_width="wrap_content"
@@ -143,7 +131,6 @@
         app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toEndOf="@+id/mailLabel"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
-
     <TextView
         android:id="@+id/facebookLabel"
         android:layout_width="wrap_content"
@@ -156,7 +143,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mailLabel" />
-
     <TextView
         android:id="@+id/facebook"
         android:layout_width="wrap_content"
@@ -169,7 +155,6 @@
         app:layout_constraintHorizontal_bias="0.558"
         app:layout_constraintStart_toEndOf="@id/facebookLabel"
         app:layout_constraintTop_toBottomOf="@id/mail" />
-
     <TextView
         android:id="@+id/instagramLabel"
         android:layout_width="wrap_content"
@@ -182,7 +167,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/facebookLabel" />
-
     <TextView
         android:id="@+id/instagram"
         android:layout_width="wrap_content"
@@ -195,7 +179,6 @@
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toEndOf="@id/instagramLabel"
         app:layout_constraintTop_toBottomOf="@id/facebook" />
-
     <TextView
         android:id="@+id/twitterLabel"
         android:layout_width="wrap_content"
@@ -208,7 +191,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/instagramLabel" />
-
     <TextView
         android:id="@+id/twitter"
         android:layout_width="wrap_content"
@@ -221,7 +203,6 @@
         app:layout_constraintHorizontal_bias="0.584"
         app:layout_constraintStart_toEndOf="@id/twitterLabel"
         app:layout_constraintTop_toBottomOf="@id/instagram" />
-
     <TextView
         android:id="@+id/companionLabel"
         android:layout_width="wrap_content"
@@ -234,7 +215,6 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/twitterLabel" />
-
     <TextView
         android:id="@+id/companion"
         android:layout_width="wrap_content"
@@ -247,7 +227,6 @@
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toEndOf="@id/companionLabel"
         app:layout_constraintTop_toBottomOf="@id/twitter" />
-
     <Button
         android:id="@+id/editPersonButton"
         android:layout_width="wrap_content"
@@ -258,7 +237,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="EditPerson"/>
-
     <Button
         android:id="@+id/DeletePersonButton"
         android:layout_width="wrap_content"
@@ -269,7 +247,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="deletePerson"/>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -279,5 +256,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="backToPeopleList"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
