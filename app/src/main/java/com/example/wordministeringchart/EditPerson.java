@@ -30,7 +30,7 @@ public class EditPerson extends AppCompatActivity {
         EditText phoneNumber = findViewById(R.id.phoneNumberEdit);
         EditText mail = findViewById(R.id.mailEdit);
         EditText facebook = findViewById(R.id.facebookEdit);
-        EditText instagram = findViewById(R.id.instagramEdit);
+        EditText instagram = findViewById(R.id.addInstagramEdit);
         EditText twitter = findViewById(R.id.twitterEdit);
 
         Intent intent = getIntent();
@@ -92,7 +92,7 @@ public class EditPerson extends AppCompatActivity {
         String updatedFacebook = facebookField.getText().toString();
         updatedPerson.setFacebook(updatedFacebook);
 
-        EditText instagramField = findViewById(R.id.instagramEdit);
+        EditText instagramField = findViewById(R.id.addInstagramEdit);
         String updatedInstagram = instagramField.getText().toString();
         updatedPerson.setInstagram(updatedInstagram);
 

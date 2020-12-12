@@ -59,7 +59,7 @@ public class AddNewPerson extends AppCompatActivity {
         newPerson.setFacebook(facebook);
 
         // get Instagram field and set in new person
-        EditText instagramField = (EditText) findViewById(R.id.instagramEdit);
+        EditText instagramField = (EditText) findViewById(R.id.addInstagramEdit);
         String instagram = instagramField.getText().toString();
         newPerson.setInstagram(instagram);
 
