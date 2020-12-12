@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -126,5 +127,10 @@ public class AddFamilyMember extends AppCompatActivity {
                 Log.d(TAG, "Data reading failed");
             }
         });
+    }
+
+    public void addThisFamily(View view) {
+        Intent intent = new Intent(this, DisplayFamiliesList.class);
+        startActivity(intent);
     }
 }

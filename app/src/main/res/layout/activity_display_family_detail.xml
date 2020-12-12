@@ -6,4 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".DisplayFamilyDetail">
 
+    <LinearLayout
+        android:id="@+id/familyInfoLiner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent" >
+        <TextView
+            android:id="@+id/familyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="familyName" />
+        <TextView
+            android:id="@+id/familyAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="familyAddress" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/familyMemberRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/familyInfoLiner"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="back"
+            android:onClick="back"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit family"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="delete family"/>
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
