@@ -18,32 +18,31 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 import java.util.ArrayList;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
-public class FamilyMemberAdapter extends RecyclerView.Adapter<FamilyMemberAdapter.FamilyMemberViewHolder> {
-    private static final String TAG = "FamilyMember_ad";
-    private final ArrayList<String> familyMemberKeyArray;
+public class SelectCompanionAdapter
+        extends RecyclerView.Adapter<SelectCompanionAdapter.SelectCompanionViewHolder> {
+    private static final String TAG = "CompanionSelectAD";
+    private final ArrayList<String> peopleKeyArray;
     private final DatabaseReference peopleRef =
             FirebaseDatabase.getInstance().getReference("People");
-    private final Context addFamilyMemberContext;
+    private final Context SelectCompanionContext;
     private String newFamilyKey;
 
-    public FamilyMemberAdapter(Context context, ArrayList<String> familyMemberKeyArray, String newFamilyKey) {
-        this.familyMemberKeyArray = familyMemberKeyArray;
-        this.addFamilyMemberContext = context;
-        this.newFamilyKey = newFamilyKey;
+    public SelectCompanionAdapter(Context context, ArrayList<String> peopleKeyArray) {
+        this.peopleKeyArray = peopleKeyArray;
+        this.SelectCompanionContext = context;
     }
 
-    static class FamilyMemberViewHolder extends RecyclerView.ViewHolder {
+    static class SelectCompanionViewHolder extends RecyclerView.ViewHolder {
         public TextView firstName;
         public TextView lastName;
         public TextView age;
         public ConstraintLayout peopleLayout;
 
-        public FamilyMemberViewHolder(View view) {
+        public SelectCompanionViewHolder(View view) {
             super(view);
             firstName = view.findViewById(R.id.firstName);
             lastName = view.findViewById(R.id.lastName);
@@ -54,15 +53,16 @@ public class FamilyMemberAdapter extends RecyclerView.Adapter<FamilyMemberAdapte
 
     @NonNull
     @Override
-    public FamilyMemberViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SelectCompanionAdapter.SelectCompanionViewHolder onCreateViewHolder
+            (@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.family_member_adapter, parent, false);
-        return new FamilyMemberViewHolder(view);
+        return new SelectCompanionAdapter.SelectCompanionViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FamilyMemberViewHolder holder, int position) {
-        String personKey = familyMemberKeyArray.get(position);
+    public void onBindViewHolder(@NonNull SelectCompanionViewHolder holder, int position) {
+        String personKey = peopleKeyArray.get(position);
         peopleRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -76,23 +76,20 @@ public class FamilyMemberAdapter extends RecyclerView.Adapter<FamilyMemberAdapte
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.d(TAG, "Data reading Failed");
+
             }
         });
-
-
         // onClickListener for remove this person from family
         holder.peopleLayout.setOnClickListener(v -> {
-            Intent intent = new Intent(addFamilyMemberContext, RemoveFamilyMember.class);
+            Intent intent = new Intent(SelectCompanionContext, AddCompanion.class);
             intent.putExtra("personKey", personKey);
             intent.putExtra("newFamilyKey", newFamilyKey);
             Log.d(TAG, "Success to putExtra " + personKey + " " + newFamilyKey);
-            startActivity(addFamilyMemberContext, intent, null);
+            startActivity(SelectCompanionContext, intent, null);
         });
     }
-
     @Override
     public int getItemCount() {
-        return familyMemberKeyArray.size();
+        return peopleKeyArray.size();
     }
 }

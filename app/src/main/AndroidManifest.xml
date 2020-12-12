@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
         android:theme="@style/Theme.WordMinisteringChart">
-        <activity android:name=".RemoveFamilyMember"></activity>
+        <activity android:name=".CreateNewCompanion"></activity>
+        <activity android:name=".DisplayCompanionDetail" />
+        <activity android:name=".DisplayCompanionsList" />
+        <activity android:name=".RemoveFamilyMember" />
         <activity android:name=".DisplayMemberOption" />
         <activity android:name=".AddFamilyMember" />
         <activity android:name=".AddNewFamily" />
