@@ -25,11 +25,11 @@ public class Family {
         this.address = address;
     }
     public ArrayList<String> getFamilyMemberKeyArray() {
-        //if (familyMemberKeyArray != null) {
+        if (familyMemberKeyArray != null) {
             return familyMemberKeyArray;
-        //} else {
-            //return null;
-        //}
+        } else {
+            return null;
+        }
 
     }
     public void setFamilyMemberKeyList(ArrayList<String> familyMemberKeyArray) {

@@ -30,11 +30,19 @@
         app:layout_constraintTop_toBottomOf="@id/familyMemberLabel"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/familyMemberOptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Family member option"
+        app:layout_constraintTop_toBottomOf="@id/familyMemberRecycler"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/familyMemberOptionRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/familyMemberRecycler" />
+        app:layout_constraintTop_toBottomOf="@+id/familyMemberOptionLabel" />
 
     <LinearLayout
         android:id="@+id/familyMemberButtonRowLiner"
@@ -63,10 +71,17 @@
         app:layout_constraintBottom_toTopOf="@id/familyMemberButtonRowLiner">
 
         <Button
-            android:id="@+id/AddSelectedAsFamilyMember"
+            android:id="@+id/AddSelectedAsFamilyMemberButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add member" />
+
+        <Button
+            android:id="@+id/ConfirmFamilyMemberButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm member"
+            android:onClick="addNewFamilyMember"/>
 
     </LinearLayout>
 

@@ -52,7 +52,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.PeopleView
     @Override
     public PeopleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_people, parent, false);
+                .inflate(R.layout.people_adapter, parent, false);
         return new PeopleViewHolder(view);
     }
 
