@@ -74,14 +74,14 @@
             android:id="@+id/AddSelectedAsFamilyMemberButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add member" />
+            android:text="Add member"
+            android:onClick="addNewFamilyMember"/>
 
         <Button
             android:id="@+id/ConfirmFamilyMemberButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirm member"
-            android:onClick="addNewFamilyMember"/>
+            android:text="Confirm member" />
 
     </LinearLayout>
 

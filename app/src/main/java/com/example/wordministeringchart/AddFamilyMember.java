@@ -27,6 +27,7 @@ public class AddFamilyMember extends AppCompatActivity {
     private String newFamilyName;
     private ArrayList<String> familyMemberKeyArray = new ArrayList<>();
     private final ArrayList<String> peopleKeyArray = new ArrayList<>();
+    private Context addFamilyMemberContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class AddFamilyMember extends AppCompatActivity {
                 familyName.setText(newFamilyName);
                 Log.d(TAG, "Family name assigned to the layout");
                 // Create familyMemberOptionRecycler
-                familyMemberOptionRecycler(newFamilyName);
+                familyMemberOptionRecycler(newFamilyName, newFamilyKey);
             }
 
             @Override
@@ -60,26 +61,29 @@ public class AddFamilyMember extends AppCompatActivity {
         });
 
         // Create familyMemberRecycler
-        familyMemberRecycler(familyRef);
+        familyMemberRecycler(newFamilyKey);
     }
 
-    public void familyMemberRecycler(DatabaseReference familyRef) {
+    public void familyMemberRecycler(String newFamilyKey) {
         Log.d(TAG, "Call familyMemberRecycler");
         RecyclerView familyMemberRecycler = findViewById(R.id.familyMemberRecycler);
         familyMemberRecycler.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         familyMemberRecycler.setLayoutManager(layoutManager);
 
-        familyRef.addValueEventListener(new ValueEventListener() {
+        DatabaseReference familyMemberRef =
+                FirebaseDatabase.getInstance().getReference("FamilyMember/" + newFamilyKey);
+        Log.d(TAG, "newFamilyKey: " + newFamilyKey);
+        familyMemberRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Family newFamily = snapshot.getValue(Family.class);
-                if (newFamily.getFamilyName() != null) {
-                    familyMemberKeyArray = newFamily.getFamilyMemberKeyArray();
-                    Log.d(TAG, "get familyMemberKeyArray");
-                } else {
-                    Log.d(TAG, "familyMemberRecycler is skipped");
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String personKey = (String) dataSnapshot.getValue();
+                    familyMemberKeyArray.add(personKey);
+                    Log.d(TAG, "Added personKey: " + personKey);
                 }
+                FamilyMemberAdapter familyMemberAdapter = new FamilyMemberAdapter(familyMemberKeyArray);
+                familyMemberRecycler.setAdapter(familyMemberAdapter);
             }
 
             @Override
@@ -87,11 +91,9 @@ public class AddFamilyMember extends AppCompatActivity {
                 Log.d(TAG, "Data reading failed");
             }
         });
-        FamilyMemberAdapter familyMemberAdapter = new FamilyMemberAdapter(familyMemberKeyArray);
-        familyMemberRecycler.setAdapter(familyMemberAdapter);
     }
 
-    public void familyMemberOptionRecycler(String newFamilyName) {
+    public void familyMemberOptionRecycler(String newFamilyName, String newFamilyKey) {
         Log.d(TAG, "Call familyMemberOptionRecycler");
         Log.d(TAG, "familyMemberOptionRecycler newFamilyName: " + newFamilyName);
         RecyclerView familyMemberOptionRecycler = findViewById(R.id.familyMemberOptionRecycler);
@@ -110,22 +112,10 @@ public class AddFamilyMember extends AppCompatActivity {
                     String personKey = dataSnapshot.getKey();
                     peopleKeyArray.add(personKey);
                 }
-                FamilyMemberOptionAdapter adapter = new FamilyMemberOptionAdapter(peopleKeyArray);
+                FamilyMemberOptionAdapter adapter =
+                        new FamilyMemberOptionAdapter(addFamilyMemberContext, peopleKeyArray, newFamilyKey);
                 familyMemberOptionRecycler.setAdapter(adapter);
 
-                Set<Integer> selectedItemPositionsSet = adapter.getSelectedItemPositions();
-                Log.d(TAG, "Get selectedItemPositions");
-                ArrayList<Integer> selectedItemPositionsArray = new ArrayList<>(selectedItemPositionsSet);
-                ArrayList<String> selectedFamilyMemberList = new ArrayList<>();
-                String selectedNewFamilyMemberKey;
-                for (int i = 0; i < selectedItemPositionsArray.size(); i++) {
-                    int selectedItemPositions = selectedItemPositionsArray.get(i);
-                    selectedNewFamilyMemberKey = peopleKeyArray.get(selectedItemPositions);
-                    selectedFamilyMemberList.add(selectedNewFamilyMemberKey);
-                }
-                for (int i = 0; i < selectedFamilyMemberList.size(); i++) {
-                    Log.d(TAG, selectedFamilyMemberList.get(i));
-                }
             }
 
             @Override

@@ -1,5 +1,7 @@
 package com.example.wordministeringchart;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,17 +22,21 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Set;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class FamilyMemberOptionAdapter
         extends RecyclerView.Adapter<FamilyMemberOptionAdapter.FamilyMemberOptionViewHolder> {
     private static final String TAG = "FamilyMemberOptAd";
     private final ArrayList<String> peopleKeyArray;
     private final DatabaseReference peopleRef =
             FirebaseDatabase.getInstance().getReference("People");
-    private Set<Integer> selectedItemPositionsSet = new ArraySet<>();
+    private final Context addFamilyMemberContext;
+    private String newFamilyKey;
 
-
-    public FamilyMemberOptionAdapter(ArrayList<String> peopleKeyArray) {
+    public FamilyMemberOptionAdapter(Context context, ArrayList<String> peopleKeyArray, String newFamilyKey) {
         this.peopleKeyArray = peopleKeyArray;
+        this.addFamilyMemberContext = context;
+        this.newFamilyKey = newFamilyKey;
     }
 
     static class FamilyMemberOptionViewHolder extends RecyclerView.ViewHolder {
@@ -70,7 +76,6 @@ public class FamilyMemberOptionAdapter
                             person.getLastName());
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.d(TAG, "Data reading Failed");
@@ -79,35 +84,16 @@ public class FamilyMemberOptionAdapter
 
         // This CardView is clickable
         holder.peopleLayout.setOnClickListener(v -> {
-            if (isSelectedItem(position)) {
-                removeSelectedItem(position);
-            } else {
-                addSelectedItem(position);
-            }
-            onBindViewHolder(holder, position);
+            Intent intent = new Intent(addFamilyMemberContext, DisplayMemberOption.class);
+            intent.putExtra("personKey", personKey);
+            intent.putExtra("newFamilyKey", newFamilyKey);
+            Log.d(TAG, "Success to putExtra " + personKey);
+            startActivity(addFamilyMemberContext, intent, null);
         });
     }
 
     @Override
     public int getItemCount() {
         return peopleKeyArray.size();
-    }
-
-    private boolean isSelectedItem(int position) {
-        return selectedItemPositionsSet.contains(position);
-    }
-
-    public void removeSelectedItem(int position) {
-        selectedItemPositionsSet.remove(position);
-        Log.d(TAG, "Position: " + position + " is removed");
-    }
-
-    public void addSelectedItem(int position) {
-        selectedItemPositionsSet.add(position);
-        Log.d(TAG, "Position: " + position + " is selected");
-    }
-
-    public Set<Integer> getSelectedItemPositions() {
-        return selectedItemPositionsSet;
     }
 }
